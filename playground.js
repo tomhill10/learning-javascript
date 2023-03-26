@@ -241,5 +241,172 @@ var ourData = ourArray[0]; //equals 50
 var ourArray = [18,64,99];
 ourArray[1] = 45; // ourArray now equals [18,45,99]
 
+//ACCESS MULTI-DIMENTIONAL ARRAYS WITH INDEXES
+var myArray = [[1,2,3], [4,5,6], [7,8,9], [[10,11,12], 13, 14]];
+var myData = myArray[0][0]; //first [0] points to first array - second [0] points to first index in the first array 
 
+//MANIPULATE ARRAYS WITH push()
+var ourArray = ["Stimpson", "J", "cat"];
+ourArray.push(["happy", "joy"]);
+// ourArray now equals ["stimpson", "J", "cat", ["happy", "joy"]]
+
+//MANIPULATE ARRAYS WITH pop() - removes the last array element 
+var ourArray = [1,2,3];
+var removedFromOurArray = ourArray.pop();
+// removedFromOurArray now equals 3, and ourArray now equals [1,2]
+
+//MANIPULATE ARRAYS WITH shift() - removes the first array element 
+var ourArray = ["Stimpson", "J", ["cat"]];
+var removedFromOurArray = ourArray.shift();
+// removedFromOurArray now equals "Stimpson" and ourArray now equals ["J", ["cat"]]
+
+//MANIPULATE ARRAYS WITH unshift() - adds element to the beginning of the array
+var ourArray = ["Stimpson", "J", "cat"];
+ourArray.shift(); // ourArray now equals ["J", "cat"]
+ourArray.unshift("Happy");
+// ourArray now equals ["Happy", "J", "cat"]
+
+//SHOPPING LIST - 50:37
+var myList = [["cereal", 3], ["milk", 2], ["bananas", 3], ["juice", 2], ["eggs", 12]];
+
+//WRITE REUSABLE CODE WITH FUNCTIONS - ourReusableFunction = function name 
+function ourReusableFunction() {
+    console.log("Heyya, World");
+}
+ourReusableFunction(); // function call
+
+//PASSING VALUES TO FUNCTIONS WITH ARGUMENTS
+function ourFunctionWithArgs(a, b) {
+    console.log(a - b);
+}
+ourFunctionWithArgs(10, 5); // Outputs 5 
+
+//GLOBAL SCOPE AND FUNCTIONS - scope
+var myGlobal = 10;
+function fun1() {
+    oopsGlobal = 5; // if var is placed infront of oopsGlobal then variable will not be global scope and will only be local to function
+}
+
+function fun2() {
+    var output = "";
+    if (typeof myGlobal != "undefined") {
+        output += "myGlobal: " + myGlobal;
+    }
+    if (typeof oopsGlobal != "undefined") {
+        output += " oopsGlobal: " + oopsGlobal;
+    }
+    console.log(output);
+}
+fun1()
+fun2()
+
+//LOCAL SCOPE AND FUNCTIONS
+function myLocalScope() {
+    var myVar = 5;
+    console.log(myVar);
+}
+myLocalScope();
+/* console.log(myVar); */ //shows error as myVar is local scope to the function
+
+//GLOBAL VS. LOCAL SCOPE IN FUNCTIONS
+var outerWear = "T-Shirt";
+
+function myOutfit() {
+    var outerWear = "sweater" // local variables will take precidence over the global variable 
+    return outerWear;
+}
+
+console.log(myOutfit());
+console.log(outerWear) //takes the global variable of outerWear
+
+
+//RETURN A VALUE FROM A FUNCTION
+function minusSeven(num) {
+    return num - 7;
+}
+console.log(minusSeven(10));
+//another function 
+function timesFive(num) {
+    return num * 5;
+}
+console.log(timesFive(5))
+
+//UNDERSTANDING UNDERFINED VALUE RETURNED FROM A FUNCTION 
+var sum = 0;
+function addThree() {
+    sum = sum + 3;
+}
+console.log(addThree(sum))
+
+//ASSIGNMENT WITH A RETURNED VALUE
+var changed = 0;
+function change(num) {
+    return (num + 5) / 3;
+}
+changed = change(10);
+console.log(changed) //prints value of 5
+
+//STAND IN LINE - A QUEUE is an abstract data structure where items are kept in order 
+function nextInLine(arr, item) {
+    arr.push(item);
+    return arr.shift();
+}
+var testArr = [1,2,3,4,5];
+console.log("Before: " + JSON.stringify(testArr));
+console.log(nextInLine(testArr, 6));
+console.log("After: " + JSON.stringify(testArr));
+
+//BOOLEAN VALUES
+function welcomeToBooleans() {
+    return false;
+}
+
+//USE CONDITIONAL LOGIC WITH IF STATEMENTS 
+function ourTrueOrFalse(isItTrue) {
+    if (isItTrue) {
+        return "Yes, it's true";
+    }
+    return "No, it's false";
+}
+console.log(ourTrueOrFalse(true))
+
+
+function trueOrFalse(wasThatTrue) {
+   if (wasThatTrue) {
+    return "Yes, that was true";
+   }
+   return "No, that was false";
+}
+console.log(trueOrFalse(true));
+
+//COMPARISON WITH THE EQUALITY OPERATOR 
+function testEqual(val) {
+    if (val == 12) {
+        return "Equal";
+    }
+    return "Not Equal";
+}
+console.log(testEqual(10))
+
+//COMPARISON WITH THE STRICT EQUALITY OPERATOR 
+function testStrict(val) {
+    if (val === 7) {
+        return "Equal";
+    }
+    return "Not Equal";
+}
+console.log(testStrict(10));
+/* 
+3 == '3' - returns equal
+3 === '3' - returns not equal 
+*/
+
+//THE INEQUALITY OPERATOR 
+function testNotEqual(val) {
+    if (val != 99) {
+        return "Not Equal";
+    }
+    return "Equal";
+}
+console.log(testNotEqual(10));
 
