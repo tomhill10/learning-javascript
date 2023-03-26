@@ -410,3 +410,63 @@ function testNotEqual(val) {
 }
 console.log(testNotEqual(10));
 
+//COMPARISON WITH THE STRICT INEQUALITY OPERATOR
+function testStrictNotEqual(val) {
+    if (val !== 17) {
+        return "Not Equal";
+    }
+    return "Equal";
+}
+console.log(testStrictNotEqual(17));
+
+//COMPARISONS WITH THE LOGICAL AND OPERATOR 
+function testGreaterThan(val) {
+    if (val > 100) {
+        return "Over 100";
+    }
+    if (val > 10) {
+        return "Over 10";
+    }
+    return "10 or Under";
+}
+console.log(testGreaterThan(10))
+
+//COMPARISON WITH THE GREATER THAN OR EQUAL TO OPERATOR 
+function testGreaterThanOrEqual(val) {
+    if (val >= 20) {
+        return "20 or Over";
+    }
+    if (val >= 10) {
+        return "10 or Over";
+    }
+    return "Less than 10";
+}
+console.log(testGreaterThanOrEqual(10))
+
+//COMPARISON WITH THE LESS THAN OPERATOR 
+function testLessThan(val) {
+    if (val < 25) {
+        return "Under 25";
+    }
+    if (val < 55) {
+        return "Under 55";
+    }
+    return "55 or Over";
+}
+console.log(testLessThan(10))
+
+//COMPARISON WITH THE LESS THAN OR EQUAL TO OPERATOR 
+function testLessThanOrEqual(val) {
+    if (val <= 25) {
+        return "25 or Under";
+    }
+    if (val <= 55) {
+        return "55 or Under";
+    }
+    return "56 or Over";
+}
+console.log(testLessThanOrEqual(55))
+
+
+// AND / OR Operators 
+
