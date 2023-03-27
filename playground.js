@@ -469,4 +469,328 @@ console.log(testLessThanOrEqual(55))
 
 
 // AND / OR Operators 
+function testLogicalAnd(val) {
+    if (val <= 50) {
+        if (val >= 25) {
+            return "Yes";
+        }
+    }
+    return "No";
+}
+testLogicalAnd(10);
+
+//Use AND operator to make this easier 
+
+function testLogicalAnd(val) {
+    if (val <= 50 && val >= 25) {
+        return "Yes";
+    }
+    return "No";
+}
+testLogicalAnd(10);
+
+
+
+//COMPARISONS WITH THE LOGICAL OR OPERATOR
+function testLogicalOr(val) {
+    if (val < 10) {
+        return "Outside";
+    }
+
+    if (val > 20) {
+        return "Outside";
+    }
+    return "Inside";
+}
+//Use OR operator to make this easier 
+function testLogicalOr(val) {
+    if (val < 10 || val > 20) {
+        return "Outside";
+    }
+    return "Inside";
+}
+
+//ELSE STATEMENTS
+function testElse(val) {
+    var result = ""
+    if (val > 5) {
+        result = "Bigger than 5";
+    }
+    if (val <= 5) {
+        result = "5 or smaller";
+    }
+    return result;
+}
+//use else statements to execute alternate block of code if false
+function testElse(val) {
+    var result = ""
+    if (val > 5) {
+        result = "Bigger than 5";
+    }
+    else {
+    return result;
+    }
+}
+
+//ELSE IF STATEMENTS
+function testElseIf(val) {
+    if (val > 10) {
+        return "Greater than 10";
+    } else if (val < 5) {
+        return "Smaller than 5";
+    } else {
+        return "Between 5 and 10";
+    }
+}
+console.log(testElseIf(7));
+
+//LOGICAL ORDER IN IF ELSE STATEMENTS
+//when using else if statements, order is very important
+function orderMyLogic(val) {
+    if (val < 10) {
+        return "Less than 10"; //once a condition is met the rest will not be run
+    } else if (val < 5) {//THIS IS WRONG!
+        return "Less than 5";
+    } else {
+        return "Greater than or equal to 10";
+    }
+}
+console.log(orderMyLogic(7));
+
+//CHAINING IF ELSE STATEMENTS 
+function testSize(num) {
+    if (num < 5) {
+        return "Tiny";
+    } else if (num < 10) {
+        return "Small";
+    } else if (num < 15) {
+        return "Medium";
+    } else if (num < 20) {
+        return "Large";
+    } else {
+        return "Huge"
+    }
+}
+console.log(testSize(19))
+
+
+//GOLD CODE 
+var names = ["Hole-in-one!", "Eagle", "Birdie", "Par", "Bogey", "Double Bodey", "Go Home!"]
+function golfScore(par, strokes) {
+    if (strokes == 1) {
+        return names[0]
+    } else if (strokes <= par - 2) {
+        return names[1]
+    } else if (strokes == par - 1) {
+        return names[2]
+    } else if (strokes == par) {
+        return names[3]
+    } else if (strokes == par + 1 ) {
+        return names[4]
+    } else if (strokes == par + 2 ) {
+        return names[5]
+    } else if (strokes >= par + 3 ) {
+        return names[6]
+    }
+    return "hi";
+}
+console.log(golfScore(5, 1))
+
+
+//SWITCH STATEMENTS
+function caseInSwitch(val) {
+    var answer = "";
+    switch(val) {
+        case 1:              //uses strict equality operator 
+         answer = "alpha";
+         break;              //goes out of statement when condition is met 
+        case 2: 
+         answer = "beta";
+         break;
+        case 3: 
+         answer = "gamma";
+         break;
+        case 4:
+         answer = "delta";
+         break;
+    }
+
+    return answer;
+}
+console.log(caseInSwitch(4))
+
+
+//DEFAULT OPTION IN SWITCH STATEMENTS 
+function switchOfStuff(val) {
+    var answer = ""
+    switch (val) {
+        case "a":
+            answer = "apple"
+            break;
+        case "b":
+            answer = "bird";
+            break;
+        case "c":
+            answer = "cat"
+            break;
+        default: 
+            answer = "stuff"
+            break;
+    }
+    return answer;
+}
+console.log(switchOfStuff(5))
+
+
+//MULTIPLE IDENTICAL OPTIONS IN SWITCH STATEMENTS
+function sequentialSizes(val) {
+    var answer = "";
+    switch(val) {
+        case 1:
+        case 2:
+        case 3:
+            answer = "Low";
+            break;
+        case 4:
+        case 5:
+        case 6:
+            answer = "Mid";
+            break;
+        case 7:
+        case 8:
+        case 9:
+            answer = "High";
+            break;
+    }
+    return answer;
+}
+console.log(sequentialSizes(5))
+
+
+//REPLACING IF ELSE CHAINS WITH SWITCH - switch statements can be easier to read 
+function chainToSwitch(val) {
+    var answer = "";
+    if (val === "bob") {
+        answer = "Marley";
+    } else if (val === 42) {
+        answer = "The Answer";
+    } else if (val === 1) {
+        answer = "There is no #1";
+    } else if (val === 99) {
+        answer = "Missed me by this much!";
+    } else if (val === 7) {
+        answer = "Ate Nine";
+    }
+    return answer;
+}
+console.log(chainToSwitch("bob"))
+
+//changed to switch 
+function chainToSwitch(val) {
+    var answer = "";
+    switch(val) {
+        case "bob":
+            answer = "Marley";
+            break;
+        case 42:
+            answer = "The Answer";
+            break;
+        case 1:
+            answer = "There is no #1";
+            break;
+        case 99:
+            answer = "Missed me by this much!";
+            break;
+        case 7: 
+            answer = "Ate Nine";
+            break;
+    }
+    
+    return answer;
+}
+console.log(chainToSwitch(7))
+
+
+//RETURNING BOOLEAN VALUES FROM FUNCTIONS
+function isLess(a, b) {
+    if (a < b) {
+        return true;
+    } else {
+        return false; // this code is not needed 
+    }
+
+}
+console.log(isLess(9, 10))
+//as all comparison operators return a Boolean true or false value
+
+function isLesss(a, b) {
+    return a < b;
+}
+console.log(isLesss(15, 10)) //wow!
+
+
+//RETURNING EARLY PATTERN FROM FUNCTIONS 
+function abTest(a, b) {
+    if (a < 0 || b < 0) {
+        return undefined;
+    }
+    return Math.round(Math.pow(Math.sqrt(a) + Math.sqrt(b), 2));
+}
+console.log(abTest(-2,2));
+
+
+//COUNTING CARDS
+var count = 0;
+function cc(card) {
+    switch(card) {
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            count++
+            break;
+        case 10:
+        case "J":
+        case "Q":
+        case "K":
+        case "A":
+            count--
+            break;
+    }
+
+    var holdbet = "Hold";
+    if (count > 0) {
+        holdbet = "bet";
+    }
+
+    return count + " " + holdbet;
+}
+cc(2); cc("K"); cc(10); cc("K"); cc("A");
+console.log(cc(4))
+
+
+//BUILD JAVASCRIPT OBJECTS
+var ourDog = {
+    "name": "Camper",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["everything!"]
+};
+
+console.log(ourDog)
+
+
+//ACCESSING OBJECT PROPERTIES WITH DOT NOTATION - one of two ways to access object
+var testObj = {
+    "hat": "ballcap",
+    "shirt": "jersey",
+    "shoes": "cleats"
+};
+
+var hatValue = testObj.hat;
+var shirtValue = testObj.shirt;
+console.log(hatValue + " " + shirtValue)
+
+//ACCESSING OBJECT PROPERTIES WITH BRACKET NOTATION
 
