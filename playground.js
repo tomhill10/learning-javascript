@@ -793,4 +793,257 @@ var shirtValue = testObj.shirt;
 console.log(hatValue + " " + shirtValue)
 
 //ACCESSING OBJECT PROPERTIES WITH BRACKET NOTATION
+var testObj2 = {
+    "an entree": "hamburger",
+    "my side": "veggies",
+    "the drink": "water"
+};
+
+var entreeValue = testObj2["an entree"];
+var drinkValue = testObj2["the drink"];
+
+//ACCESSING OBJECT PROPERTIES WITH VARIABLES 
+var testObj = {
+    12: "Namath",
+    16: "Montana",
+    19: "Unitas"
+};
+
+var playerNumber = 16;
+var player = testObj[playerNumber];
+
+
+//UPDATING OBJECT PROPERTIES 
+var ourDog = {
+    "name": "Camper",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["everything"]
+};
+ourDog.name = "Happy Camper"; // use dot notation
+console.log(ourDog)
+
+//ADD NEW PROPERTIES TO AN OBJECT
+var ourDog = {
+    "name": "Camper",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["everything"]
+};
+ourDog.bark = "bow-wow"
+console.log(ourDog)
+
+//DELETE PROPERTIES FROM OBJECTS
+var ourDog = {
+    "name": "Camper",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["everything"]
+};
+delete ourDog.bark
+console.log(ourDog)
+
+//USING OBJECTS FOR LOOKUPS
+function phoneticLookup(val){
+    var result = "";
+    switch(val) {
+        case "alpha":
+            result = "Adams";
+            break;
+        case "bravo":
+            result = "Boston";
+            break;
+        case "charlie":
+            result = "Chicago";
+            break;
+        case "delta":
+            result = "Denver";
+            break;
+        case "echo":
+            result = "Easy";
+            break;
+        case "foxtrot":
+            result = "Frank";
+            break;
+    }
+    return result;
+}
+console.log(phoneticLookup("alpha"));
+//to use an object to look up do this .
+function phoneticLookupObj(val) {
+    var result = "";
+    var lookup = {
+        "alpha": "Adams",
+        "bravo": "Boston",
+        "charlie": "Chicago",
+        "delta": "Denver",
+        "echo": "Easy",
+        "foxtrot": "Frank",
+    };
+    result = lookup[val]
+    return result;
+}
+console.log(phoneticLookupObj("bravo"))
+
+//TESTING OBJECTS FOR PROPERTIES 
+var myObj = {
+    gift: "pony",
+    pet: "kitten",
+    bed: "sleigh"
+};
+function checkObj(checkProp) {
+    
+    if (myObj.hasOwnProperty(checkProp)) {
+        return myObj[checkProp];
+    } else {
+    return "Not Found";
+    }
+};
+console.log(checkObj("gift"))
+
+//MANIPULATING COMPLEX OBJECTS
+var myMusic = [
+    {
+        "artist": "Billiy Joel",
+        "title": "Piano Man",
+        "release_year": 1973,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+        "gold": true
+    },
+    {
+        "artist": "Tom Hill",
+        "title": "Dance if you want to",
+        "release_year": 2023,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+        "gold": true
+    }
+]
+
+//ACCESSING NESTED OBJECTS
+var myStorage = {
+    "car": {
+        "inside": {
+            "glove box": "maps",
+            "passenger seat": "crumbs"
+        },
+        "outside": {
+            "trunk": "jack"
+        }
+    }
+};
+var gloveBoxContents = myStorage.car.inside["glove box"]; //remember key:value pairs which have a space need to be in []
+console.log(gloveBoxContents)
+
+//ACCESSING NESTED ARRAYS
+var myPlants = [
+    {
+        type: "flowers",
+        list: [
+            "rose",
+            "tulip",
+            "dandelion"
+        ]
+    },
+    {
+        type: "trees",
+        list: [
+            "fir",
+            "pine",
+            "birch"
+        ]
+    }
+];
+var secondTree = myPlants[1].list[1]; //can index through like any other array 
+console.log(secondTree)
+
+//RECORD COLLECTION 
+// Setup
+const recordCollection = {
+    2548: {
+      albumTitle: 'Slippery When Wet',
+      artist: 'Bon Jovi',
+      tracks: ['Let It Rock', 'You Give Love a Bad Name']
+    },
+    2468: {
+      albumTitle: '1999',
+      artist: 'Prince',
+      tracks: ['1999', 'Little Red Corvette']
+    },
+    1245: {
+      artist: 'Robert Palmer',
+      tracks: []
+    },
+    5439: {
+      albumTitle: 'ABBA Gold'
+    }
+  };
+  
+  // Only change code below this line
+  function updateRecords(records, id, prop, value) {
+      if (value === "") {
+      delete records[id][prop];
+    } else if (prop !== "tracks" && value !== "") {
+      records[id][prop] = value 
+    } else if (prop === "tracks") {
+      records[id][prop] = records[id][prop] || [];
+      records[id][prop].push(value);
+    } else if (prop === "tracks" && value !== "") {
+      records[id][prop].push(value);
+    } else if (value === "") {
+      delete records[id][prop];
+    }
+  
+  
+    return records;
+  }
+  
+  updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+  updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me")
+  updateRecords(recordCollection, 2548, "artist", "")
+  updateRecords(recordCollection, 1245, "tracks", "Addicted to Love")
+  updateRecords(recordCollection, 2468, "tracks", "Free")
+  updateRecords(recordCollection, 2548, "tracks", "")
+  updateRecords(recordCollection, 1245, "albumTitle", "Riptide")
+  
+  console.log(recordCollection)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
