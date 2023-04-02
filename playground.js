@@ -996,12 +996,7 @@ const recordCollection = {
       records[id][prop] = records[id][prop] || [];
       records[id][prop].push(value);
     } else if (prop === "tracks" && value !== "") {
-      records[id][prop].push(value);
-    } else if (value === "") {
-      delete records[id][prop];
-    }
-  
-  
+      records[id][prop].push(value); }  
     return records;
   }
   
@@ -1015,35 +1010,560 @@ const recordCollection = {
   
   console.log(recordCollection)
 
+//ITERATE WITH WHILE LOOPS
+var myArray = [];
+var i = 0;
+while(i < 5) {
+    myArray.push(i);
+    i++;
+}
+console.log(myArray);
+
+//ITERATE WITH FOR LOOPS - most common type of loop in JS
+var ourArray = [];
+
+for (var i = 0; i < 5; i++) {         //(var i = 0;             i < 5;           i++)
+    ourArray.push(i);                 //initialization        //condition       //"final" expression
+}
+console.log(ourArray);
+
+//another for loop with the numbers 1 thru 5
+var myArray = [];
+for (i = 1; i < 6; i++) {
+    myArray.push(i);
+}
+console.log(myArray)
+
+//ITERATE ODD NUMBERS WITH A FOR LOOP
+var ourArray = [];
+
+for (var i = 0; i < 10; i += 2) {
+    ourArray.push(i);
+}
+console.log(ourArray)
+
+//ODD
+var oddArray = [];
+
+for (var i = 1; i < 10; i += 2) {
+    oddArray.push(i);
+}
+console.log(oddArray)
+
+//COUNT BACKWARDS WITH A FOR LOOP
+var ourArray = [];
+
+for (var i = 10; i > 0; i -= 2) {
+    ourArray.push(i);
+}
+console.log(ourArray)
+
+//ITERATE THROUGH AN ARRAY WITH A FOR LOOP - so it completes the for loop before returning it seems!
+var ourArr = [9, 10, 11, 12];
+var ourTotal = 0;
+
+for (var i = 0; i < ourArr.length; i++) {
+    ourTotal += ourArr[i];
+}
+console.log(ourTotal);
+
+
+//NESTING FOR LOOPS 
+function multiplyAll(arr) {
+    var product = 1;
+
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr[i].length; j++)
+        product *= arr[i][j];
+    }
+
+    return product;
+}
+
+var product = multiplyAll([[1,2], [3,4], [5,6,7]])
+
+console.log(product)
+
+//ITERATE WITH DO...WHILE LOOPS
+//A while loop first checks the condition before it runs any code within the loop.
+//A DO while loop will always run atleast one time and then check the condition 
+var myArray = [];
+var i = 10;
+
+do { 
+    myArray.push(i);
+    i++
+} while (i < 5)
+console.log(i, myArray);
+
+//PROFILE LOOKUP
+// Setup
+const contacts = [
+    {
+      firstName: "Akira",
+      lastName: "Laine",
+      number: "0543236543",
+      likes: ["Pizza", "Coding", "Brownie Points"],
+    },
+    {
+      firstName: "Harry",
+      lastName: "Potter",
+      number: "0994372684",
+      likes: ["Hogwarts", "Magic", "Hagrid"],
+    },
+    {
+      firstName: "Sherlock",
+      lastName: "Holmes",
+      number: "0487345643",
+      likes: ["Intriguing Cases", "Violin"],
+    },
+    {
+      firstName: "Kristian",
+      lastName: "Vos",
+      number: "unknown",
+      likes: ["JavaScript", "Gaming", "Foxes"],
+    },
+  ];
+  
+  function lookUpProfile(name, prop) {
+    for (var i = 0; i < contacts.length; i++) {
+      if(contacts[i].firstName === name) {
+        return contacts[i][prop] || "No such property"
+  
+      }
+    }
+    return "No such contact";
+  }
+  
+  lookUpProfile("Akira", "likes");   
+
+//GENERATE RANDOM FACTIONS
+function randomFraction() {
+    return Math.random();
+}
+console.log(randomFraction());
+
+//GENERATE RANDOM WHOLE NUMBERS
+var randomNumberBetween0and19 = Math.floor(Math.random() * 20); //Math.floor rounds down to the nearist whole number
+console.log(randomNumberBetween0and19)
+
+function randomWholeNum() {
+    
+    return Math.floor(Math.random() * 10);
+}
+console.log(randomWholeNum());
+
+//GENERATE RANDOM WHOLE NUMBERS WITHIN A RANGE 
+function ourRandomRange(ourMin, ourMax) {
+    return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+console.log(ourRandomRange(5, 15));
+
+//USE THE PARSEINT FUNCTION - takes a string and returns an integer
+function converToInteger(str) {
+    return parseInt(str);
+}
+console.log(converToInteger("56")) 
+
+//USE THE PARESINT FUNCTION WITH RADIX
+function convertToInteger(str) {
+    return parseInt(str, 2)
+
+}
+console.log(converToInteger("10011")); //This string has now been converted to a binary number "Base 2"
+
+//USE THE CONDITIONAL TERNARY OPERATOR - like an if else statement 
+function checkEqual(a, b) {
+    return a === b ? true : false;
+}
+console.log(checkEqual(1, 2));
+
+//USE MULTIPLE CONDITIONAL TERNARY OPERATORS - holy shit this is cool
+function checkSign(num) {
+    return num > 0 ? "positive" : num < 0 ? "negative" : "zero"
+
+}
+console.log(checkSign(0));
+
+//DIFFERENCES BETWEEN THE VAR AND LET KEYWORDS
+let catName = "Quincy";
+var quote;
+
+catName = "Beau"; //var variables we can declare more than once
+                      //let variables you can only declare once in the same scope
+                      //if using let you can just update the variable 
+function catTalk() {  // you can "use strict" to catch mistakes at top of file 
+    "use strict";
+
+    catName = "Oliver";
+    quote = catName + " says Meow!";
+}
+console.log(catTalk());
+
+//COMPARE SCOPE OF THE VAR AND LET KEYWORDS 
+//var variables are declared glabally or locally if declared inside a function 
+//let is limited to the scope of the block statement or expression that it was declared in
+
+function checkScope() {
+    "use strict";
+    let i = "function scope"; // this let function is only able to be accessed within this function therefore its function scope 
+    if (true) {
+        let i = "block scope"; //in this case the let inside this block of code cannot be accessed outside so it always block scope
+        console.log("Block scope i is: ", i);
+    }
+    console.log("Function scope i is: ", i);
+    return i;
+}
+checkScope()
+
+//DECLARE A READ-ONLY VARIABLE WITH THE CONST KEYWORD
+function printManyTimes(str) {
+    "use strict";
+
+    const SENTENCE = str + " is cool!"; //if set to const the variable cannot be updated 
+                                      //When using CONST it is common to use all CAPS for the name of the variable 
+    // sentence = str + " is amazing!" 
+
+    for(let i = 0; i < str.length; i+=2) {
+        console.log(SENTENCE);
+    }
+}
+printManyTimes("freeCodeCamp");
+
+//MUTATE AN ARRAY DECLARED WITH CONST
+const s = [5, 7, 2];
+function editInPlace() {
+    "use strict";
+
+    s[0] = 2;
+    s[1] = 5;
+    s[2] = 7;
+}
+editInPlace();
+console.log(s);
+
+
+//PREVENT OBJECT MUTATION
+function freezeObj() {
+    "use strict";
+    const MATH_CONSTANTS = {
+        PI: 3.14
+    };
+
+    Object.freeze(MATH_CONSTANTS) //stops the object within the const MATH_CONSTANTS variable being updated 
+
+    try {
+        MATH_CONSTANTS.PI = 99;
+    } catch( ex) {
+        console.log(ex);
+    }
+    return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+
+//USE ARROW FUNCTIONS TO WRITE CONSISE ANONYMOUS FUNCTIONS
+ //var magic = function() { // this is called an ANONYMOUS function.
+ //   return new Date();
+ //};
+// when you have an anonymous function you can use arrow functions to make the code easier to write 
+const magic = () => new Date(); //is only returning one value 
+
+//WRITE ARROW FUNCTIONS WITH PARAMETERS 
+var myConcat = function(arr1, arr2) {
+    return arr1.concat(arr2);
+};
+console.log(myConcat([1, 2], [3, 4, 5]));
+//re-write in arrow function 
+const MYCONCAT2 = (arr1, arr2) => arr1.concat(arr2);
+console.log(MYCONCAT2([1, 2], [3, 4, 5]));
+
+//WRITE HIGHER ORDER ARROW FUNCTIONS
+//arrow functinons work really well with higher order functions such as map/filter/reduce.
+const REALNUMBERARRAY = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+
+
+const SQUARELIST = (arr) => {
+    const SQUAREDINTEGERS = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
+    return SQUAREDINTEGERS;
+};
+
+const SQUAREDINTEGERS = SQUARELIST(REALNUMBERARRAY);
+console.log(SQUAREDINTEGERS);
+
+//WRITE HIGHER ORDER ARROW FUNCTIONS 
+const increment = (function () {
+    return function increment(number, value = 1) { //if a value isn't passed in it will default to 1
+        return number + value;
+    };
+})();
+console.log(increment(5, 5));
+console.log(increment(5));
+
+//USE THE REST OPERATOR WITH FUNCTION PARAMETERS
+const sum2 = (function () {
+    return function sum2(...args) { //using the ...args means we can pass in as many arguments as we want 
+        
+        return args.reduce((a, b) => a + b, 0);
+    };
+})();
+console.log(sum2(1, 2, 3, 4)); 
+
+
+//USE THE SPREAD OPERATOR TO EVALUATE ARRAYS IN-PLACE
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function() {
+    arr2 = [...arr1]; //not copying arr1 to arr 2 we are not making arr2 equal to arr1. This is called the SPREAD operator 
+    arr1[0] = 'potato'
+})();
+console.log(arr2);
 
 
 
 
 
 
+//USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM OBJECTS
+var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+
+var x = voxel.x; //old way 
+var y = voxel.y;
+var z = voxel.z;
+
+//ney way - much quicker 
+var { x : a, y : b, z : x } = voxel; // a = 3.6, b = 7.4, c = 6.54
+console.log(a)
+
+
+//below targeting the values from an object 
+const HIGH_TEMPERATURES = {
+    yesterday: 75,
+    today: 77,
+    tomorrow: 80
+  };
+  
+  const {today, tomorrow} = HIGH_TEMPERATURES;
+console.log(today);
+
+//USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM OBJECTS 
+const HIGH_TEMPERATURES2 = {
+    yesterday: 75,
+    today: 77,
+    tomorrow: 80
+  };
+  const {today : highToday, tomorrow : highTomorrow} = HIGH_TEMPERATURES;
+console.log(highToday, highTomorrow)
+
+
+//USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM NESTED OBJECTS
+const LOCAL_FORECAST = {
+    yesterday: { low: 61, high: 75 },
+    today: { low: 64, high: 77 },
+    tomorrow: { low: 68, high: 80 }
+  };
+  
+  const {today: {low: lowToday2, high: highToday2}} = LOCAL_FORECAST
+console.log(highToday2, lowToday2)
+  
+
+//USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM ARRAYS
+let aa = 8, bb = 6;
+
+(() => {
+  [aa, bb] = [bb, aa]
+})();
+console.log(aa);
+console.log(bb);
+
+//USE DESTRUCTURING ASSIGNMENT WITH THE REST OPERATOR 
+function removeFirstTwo(list) {
+    
+    const [,, ...shorterList] = list; //you could assign the first two numbers in the array to a variable like aa and bb or leave empty to skip
+    
+    return shorterList;
+  }
+  
+  const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const sourceWithoutFirstTwo = removeFirstTwo(source);
+  console.log(source)
+  console.log(sourceWithoutFirstTwo)
+
+  //USE DESTRUCTURING ASSIGNMENT TO PASS AN OBJECT AS A FUNCTION'S PARAMETERS
+  const stats = {
+    max: 56.78,
+    standard_deviation: 4.34,
+    median: 34.54,
+    mode: 23.87,
+    min: -0.75,
+    average: 35.85
+  };
+  
+  const half = (function() { //this is commonly used with API calls 
+    return function half({max, min}) {
+        return (max + min) / 2.0;
+    };
+  })();
+console.log(stats);
+console.log(half(stats));
+
+
+//CREATE STRINGS USING TEMPLATE LITERALS Template literals allow you to 
+//                                           create multi-line strings and to use string interpolation features to create strings.
+const person = {
+    name: "Zodiac Hasbro",
+    age: 56
+  };
+  
+  const greeting = `Hello, my name is ${person.name}!
+  I am ${person.age} years old.`;
+  
+  console.log(greeting);
+
+  //for an array
+  const result = {
+    success: ["max-length", "no-amd", "prefer-arrow-functions"],
+    failure: ["no-var", "var-on-top", "linebreak"],
+    skipped: ["no-extra-semi", "no-dup-keys"]
+  };
+  function makeList(arr) {
+    
+    const failureItems = [];
+    for (let i = 0; i < arr.length; i++) {
+      failureItems.push(`<li class="text-warning">${arr[i]}</li>`) // must use ` 
+    }
+    
+  
+    return failureItems;
+  }
+  
+  const failuresList = makeList(result.failure);
+  console.log(failuresList)
+  
+
+  //WRITE CONCISE OBJECT LITERAL DECLARATIONS USING OBJECT PROPERTY SHORTHAND
+  const createPerson = (name, age, gender) => {
+    return {
+        name: name,
+        age: age,
+        gender: gender,
+    };
+
+  };
+  console.log(createPerson("Zodiac Hasbro", 56, "Male"));
+//shorthand
+
+const createMe = (myname, myage, mygender) => ({myname, myage, mygender});
+console.log(createMe("Tom Hill", 27, "male"));
+
+
+
+//WRITE CONCISE DECLARATIVE FUNCTIONS WITH ES6
+//long way to put finction within in object
+const bicycle = {
+    gear: 2,
+    setGear: function(newGear) {
+      this.gear = newGear;
+    }
+  };
+  bicycle.setGear(3);
+  console.log(bicycle.gear);
+  //quicker way
+const bicycleqk = {
+    gear: 2,
+    setGear(newGear) {
+      this.gear = newGear;
+    }
+  };
+  bicycleqk.setGear(3);
+  console.log(bicycleqk.gear);
+
+
+  //USE CLASS SYNTAX TO DEFINE A CONSTRUCTOR FUNCTION 
+  // Explicit constructor
+class SpaceShuttle {
+    constructor(targetPlanet) {
+      this.targetPlanet = targetPlanet;
+    }
+    takeOff() {
+      console.log("To " + this.targetPlanet + "!");
+    }
+  }
+  
+  // Implicit constructor 
+  class Rocket {
+    launch() {
+      console.log("To the moon!");
+    }
+  }
+  
+  const zeus = new SpaceShuttle('Jupiter');
+  // prints To Jupiter! in console
+  zeus.takeOff();
+  
+  const atlas = new Rocket();
+  // prints To the moon! in console
+  atlas.launch();
+
+
+//simple example 
+class Vegetable {
+    constructor(name){
+      this.name = name;
+    }
+  }
+  
+  const carrot = new Vegetable('carrot');
+  console.log(carrot.name); // Should display 'carrot'
 
 
 
 
+  //USE GETTERS AND SETTERS TO CONTROL ACCESS TO AN OBJECT
+  class Book {
+    constructor(author) {
+      this._author = author;
+    }
+    // getter
+    get writer() {
+      return this._author;
+    }
+    // setter
+    set writer(updatedAuthor) {
+      this._author = updatedAuthor;
+    }
+  }
+  const novel = new Book('anonymous');
+  console.log(novel.writer);
+  novel.writer = 'newAuthor';
+  console.log(novel.writer);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  //another example 
+  function makeClass() {
+    class Thermostat {
+      constructor(temp) {
+        this._temp = 5/9 * (temp - 32);//"this" means variable is only accessable within this class - 
+      }                                //whenever you start a variable with "_" genrally signify it's a private variable. Just for that scope or class
+      get temperature(){
+        return this._temp;
+      }
+      set temperature(updatedTemp){
+      this._temp = updatedTemp;
+      }
+    } 
+    return Thermostat;
+    }
+    
+    
+    
+    const Thermostat = makeClass();
+    const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+    let temp = thermos.temperature; // 24.44 in Celsius
+    thermos.temperature = 26;
+    temp = thermos.temperature; // 26 in Celsius#
+    console.log(temp)
+    
+    
+    
+    
+                                      
